@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOD One | Plataforma inteligente para oficinas</title>
+<meta name="description" content="SOD One organiza o fluxo da oficina, preserva o conhecimento técnico e ajuda a vender mais serviços com segurança.">
+<style>
+:root{
+  --bg:#07090d;
+  --panel:#10141c;
+  --card:#151a24;
+  --card2:#1b2230;
+  --line:rgba(255,255,255,.10);
+  --text:#f6f7fb;
+  --muted:#aab3c2;
+  --orange:#ff7a00;
+  --orange2:#ffad5c;
+  --green:#29c56a;
+  --red:#ff5252;
+  --shadow:0 28px 90px rgba(0,0,0,.42);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(255,122,0,.24),transparent 32%),
+    radial-gradient(circle at 85% 10%,rgba(255,173,92,.10),transparent 28%),
+    linear-gradient(180deg,#07090d,#0d1018 46%,#07090d);
+  color:var(--text);
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.container{width:min(1180px,92%);margin:auto}
+.header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(7,9,13,.84);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900}
+.logoMark{
+  width:46px;height:46px;border-radius:16px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--orange),#ffc08a);
+  color:#111;font-weight:900;
+  box-shadow:0 15px 34px rgba(255,122,0,.28);
+}
+.logo small{display:block;color:var(--muted);font-weight:700;margin-top:2px}
+.navLinks{display:flex;gap:22px;color:var(--muted);font-weight:800;font-size:14px}
+.actions{display:flex;gap:10px;align-items:center}
+.btn{
+  border:0;border-radius:999px;padding:13px 18px;
+  font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  transition:.18s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#111;box-shadow:0 18px 40px rgba(255,122,0,.26)}
+.btn.secondary{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,122,0,.34);
+  background:rgba(255,122,0,.12);
+  color:#ffd0aa;border-radius:999px;padding:8px 12px;
+  font-size:13px;font-weight:900;
+}
+.hero{padding:88px 0 66px}
+.heroGrid{display:grid;grid-template-columns:1.04fr .96fr;gap:40px;align-items:center}
+.hero h1{
+  font-size:clamp(44px,7.4vw,84px);
+  line-height:.94;letter-spacing:-3.5px;
+  margin:18px 0 22px;
+}
+.hero p{font-size:20px;color:var(--muted);max-width:680px;line-height:1.48;margin-bottom:28px}
+.heroActions{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;color:#dce1e8}
+.trust span{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:999px;padding:8px 11px;font-size:13px;font-weight:800}
+.mock{
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid var(--line);border-radius:32px;padding:18px;box-shadow:var(--shadow);
+  position:relative;overflow:hidden;
+}
+.mock:before{
+  content:"";position:absolute;inset:-80px -90px auto auto;width:240px;height:240px;
+  background:radial-gradient(circle,rgba(255,122,0,.20),transparent 65%);
+}
+.mockScreen{
+  position:relative;background:#0b0f16;border:1px solid var(--line);
+  border-radius:24px;padding:18px;min-height:520px;
+}
+.mockTop{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:16px}
+.mockHeroCard{
+  background:linear-gradient(135deg,rgba(255,122,0,.18),rgba(255,255,255,.05));
+  border:1px solid rgba(255,122,0,.25);border-radius:22px;padding:20px;margin-bottom:14px;
+}
+.mockHeroCard h3{font-size:26px;letter-spacing:-.7px;margin-bottom:8px}
+.mockHeroCard p{font-size:14px;margin:0;color:#cbd3df}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px}
+.kpi small{color:var(--muted);font-weight:900;text-transform:uppercase;font-size:11px}
+.kpi b{display:block;font-size:30px;margin-top:7px;color:#fff}
+.flow{display:grid;gap:10px}
+.flow div{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:13px;display:flex;justify-content:space-between;gap:12px;color:#dce1e8;
+}
+.flow span{color:var(--orange2);font-weight:900}
+.section{padding:74px 0}
+.sectionTitle{max-width:800px;margin-bottom:30px}
+.sectionTitle h2{font-size:clamp(34px,5.3vw,58px);letter-spacing:-2.4px;line-height:1;margin-bottom:14px}
+.sectionTitle p{color:var(--muted);font-size:18px;line-height:1.48}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  background:rgba(255,255,255,.055);
+  border:1px solid var(--line);border-radius:26px;padding:26px;
+  min-height:190px;
+}
+.cardIcon{
+  width:46px;height:46px;border-radius:16px;display:grid;place-items:center;
+  background:rgba(255,122,0,.13);border:1px solid rgba(255,122,0,.28);margin-bottom:16px;font-size:22px;
+}
+.card h3{font-size:22px;margin-bottom:10px}
+.card p{color:var(--muted);line-height:1.48}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;align-items:stretch}
+.panel{
+  background:rgba(21,26,36,.86);
+  border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:0 18px 60px rgba(0,0,0,.22);
+}
+.panel h3{font-size:30px;letter-spacing:-1px;margin-bottom:12px}
+.panel p{color:var(--muted);line-height:1.5}
+.checklist{display:grid;gap:12px;margin-top:18px}
+.check{
+  display:flex;gap:12px;align-items:flex-start;
+  background:#10141d;border:1px solid var(--line);border-radius:17px;padding:14px;
+}
+.check b{display:block;margin-bottom:3px}.check small{color:var(--muted)}
+.dot{width:24px;height:24px;min-width:24px;border-radius:999px;background:rgba(41,197,106,.13);border:1px solid rgba(41,197,106,.35);color:#9ff0bc;display:grid;place-items:center;font-weight:900}
+.steps{display:grid;gap:12px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;background:#10141d;border:1px solid var(--line);border-radius:20px;padding:16px}
+.stepNo{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,var(--orange),var(--orange2));color:#111;display:grid;place-items:center;font-weight:900}
+.step h4{font-size:18px;margin-bottom:4px}.step p{font-size:14px;color:var(--muted)}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:28px;position:relative;overflow:hidden}
+.price.featured{border-color:rgba(255,122,0,.64);box-shadow:0 24px 70px rgba(255,122,0,.14)}
+.price h3{font-size:30px;margin:10px 0 8px}.price p{color:var(--muted);margin-bottom:18px}
+.price ul{list-style:none;display:grid;gap:10px;color:#dce1e8;margin:18px 0}
+.price li:before{content:"✓";color:var(--green);font-weight:900;margin-right:8px}
+.price .soon{color:#ffd0aa;font-weight:900;margin-top:8px}
+.cta{
+  background:linear-gradient(135deg,rgba(255,122,0,.23),rgba(255,255,255,.055));
+  border:1px solid rgba(255,122,0,.24);border-radius:38px;padding:58px;text-align:center;box-shadow:var(--shadow);
+}
+.cta h2{font-size:clamp(36px,5vw,64px);letter-spacing:-2.5px;line-height:1;margin-bottom:14px}
+.cta p{color:#d3d9e3;font-size:18px;max-width:760px;margin:0 auto 26px;line-height:1.48}
+.footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted)}
+.footerRow{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:980px){
+  .heroGrid,.cards,.split,.pricing{grid-template-columns:1fr}
+  .navLinks{display:none}
+}
+@media(max-width:560px){
+  .actions .secondary{display:none}
+  .hero{padding:56px 0 40px}
+  .hero h1{letter-spacing:-2px}
+  .heroActions .btn,.cta .btn{width:100%}
+  .kpis{grid-template-columns:1fr}
+  .cta{padding:34px 22px}
+  .nav{height:auto;padding:14px 0}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="#">
+      <div class="logoMark">S1</div>
+      <div>SOD One<small>Processo • Diagnóstico • Gestão</small></div>
+    </a>
+    <nav class="navLinks">
+      <a href="#recursos">Recursos</a>
+      <a href="#operacao">Operação</a>
+      <a href="#planos">Planos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="actions">
+      <a class="btn secondary" href="https://sodone.com.br/app.html">Entrar</a>
+      <a class="btn primary" href="#contato">Teste grátis</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container heroGrid">
+      <div>
+        <div class="badge">🚀 SOD One Platform</div>
+        <h1>A plataforma inteligente para oficinas de alta performance.</h1>
+        <p>Organize o fluxo da oficina, preserve o conhecimento técnico da equipe e venda mais serviços com segurança, clareza e processo.</p>
+        <div class="heroActions">
+          <a class="btn primary" href="#contato">Quero testar o SOD One</a>
+          <a class="btn secondary" href="#recursos">Conhecer recursos</a>
+        </div>
+        <div class="trust">
+          <span>✔ Criado dentro de uma oficina real</span>
+          <span>✔ Pensado para operação diária</span>
+          <span>✔ Base técnica inteligente</span>
+        </div>
+      </div>
+
+      <div class="mock">
+        <div class="mockScreen">
+          <div class="mockTop"><span>● SOD One Dashboard</span><span>Oficina em tempo real</span></div>
+          <div class="mockHeroCard">
+            <h3>Centro de Controle</h3>
+            <p>Veja a oficina, prioridades, pós-venda e fluxo em poucos segundos.</p>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><small>Veículos</small><b>12</b></div>
+            <div class="kpi"><small>Diagnóstico</small><b>3</b></div>
+            <div class="kpi"><small>Aprovação</small><b>4</b></div>
+            <div class="kpi"><small>Pós-venda</small><b>8</b></div>
+          </div>
+          <div class="flow">
+            <div><b>Hilux SW4</b><span>Diagnóstico</span></div>
+            <div><b>Renegade Diesel</b><span>Execução</span></div>
+            <div><b>Amarok V6</b><span>Aprovação</span></div>
+            <div><b>Saveiro Robust</b><span>Entrega</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recursos" class="section">
+    <div class="container">
+      <div class="sectionTitle">
+        <h2>Mais do que OS. Um sistema para controlar a operação.</h2>
+        <p>O SOD One foi pensado para oficinas que querem processo, diagnóstico, organização e uma operação mais profissional.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="cardIcon">🚗</div><h3>Fluxo da Oficina</h3><p>Controle visual de cada veículo por etapa: entrada, diagnóstico, orçamento, peças, execução, entrega e pós-venda.</p></div>
+        <div class="card"><div class="cardIcon">🧠</div><h3>Base Técnica Inteligente</h3><p>Registre tempos, procedimentos, peças comuns, pontos críticos e conhecimento acumulado da oficina.</p></div>
+        <div class="card"><div class="cardIcon">📋</div><h3>Checklist Modular</h3><p>Checklist por sistemas do veículo, com observações, status e base para relatório técnico ao cliente.</p></div>
+        <div class="card"><div class="cardIcon">💰</div><h3>Orçamento Técnico</h3><p>Monte orçamentos com mão de obra, peças, observações e padrão profissional para aprovação.</p></div>
+        <div class="card"><div class="cardIcon">📦</div><h3>Peças e Estoque</h3><p>Controle de peças, busca por código, estoque mínimo, fornecedores e envio para orçamento.</p></div>
+        <div class="card"><div class="cardIcon">🤝</div><h3>Pós-venda</h3><p>Organize contatos de retorno, revisão, aniversário e relacionamento com clientes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="operacao" class="section">
+    <div class="container split">
+      <div class="panel">
+        <div class="badge">Criado na prática</div>
+        <h3>Feito por quem vive a rotina da oficina.</h3>
+        <p>O SOD One nasce da operação real da Dalpiva Centro Técnico: diagnóstico, transparência, fluxo, controle técnico e gestão do conhecimento.</p>
+        <div class="checklist">
+          <div class="check"><span class="dot">✓</span><div><b>Menos informação perdida</b><small>Cada OS concentra dados, observações, fotos, checklist e histórico.</small></div></div>
+          <div class="check"><span class="dot">✓</span><div><b>Mais padrão de atendimento</b><small>A equipe trabalha com processo, e não apenas com memória ou WhatsApp.</small></div></div>
+          <div class="check"><span class="dot">✓</span><div><b>Mais segurança para vender</b><small>Relatórios, evidências e checklist ajudam o cliente a entender a necessidade do serviço.</small></div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Como o SOD organiza o dia</h3>
+        <div class="steps">
+          <div class="step"><div class="stepNo">1</div><div><h4>Entrada do veículo</h4><p>Cliente, placa, reclamação e observações iniciais.</p></div></div>
+          <div class="step"><div class="stepNo">2</div><div><h4>Diagnóstico e checklist</h4><p>Avaliação por sistemas, fotos e base técnica relacionada.</p></div></div>
+          <div class="step"><div class="stepNo">3</div><div><h4>Orçamento e aprovação</h4><p>Peças, mão de obra, observações e envio claro para o cliente.</p></div></div>
+          <div class="step"><div class="stepNo">4</div><div><h4>Execução e pós-venda</h4><p>Fluxo, entrega, relatório e retorno programado.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="planos" class="section">
+    <div class="container">
+      <div class="sectionTitle">
+        <h2>Planos para cada fase da oficina.</h2>
+        <p>Estrutura comercial preparada para oficinas que querem começar simples e evoluir para gestão avançada.</p>
+      </div>
+      <div class="pricing">
+        <div class="price">
+          <div class="badge">Essencial</div>
+          <h3>Basic</h3>
+          <p>Para organizar a operação inicial.</p>
+          <ul>
+            <li>Fluxo da Oficina</li>
+            <li>Clientes e veículos</li>
+            <li>Checklist</li>
+            <li>Orçamentos</li>
+          </ul>
+          <div class="soon">Valores em breve</div>
+        </div>
+        <div class="price featured">
+          <div class="badge">Mais indicado</div>
+          <h3>Plus</h3>
+          <p>Para oficinas que querem processo e pós-venda.</p>
+          <ul>
+            <li>Tudo do Basic</li>
+            <li>Estoque de peças</li>
+            <li>Base Técnica</li>
+            <li>Pós-venda</li>
+            <li>Relatórios profissionais</li>
+          </ul>
+          <div class="soon">Plano principal</div>
+        </div>
+        <div class="price">
+          <div class="badge">Avançado</div>
+          <h3>Pro</h3>
+          <p>Para gestão técnica e comercial avançada.</p>
+          <ul>
+            <li>Tudo do Plus</li>
+            <li>Indicadores</li>
+            <li>Multiusuário</li>
+            <li>IA SOD</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          <div class="soon">Em desenvolvimento</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="section">
+    <div class="container">
+      <div class="cta">
+        <h2>Quer organizar sua oficina com processo?</h2>
+        <p>O SOD One está em fase de validação comercial. Oficinas parceiras poderão testar a plataforma e ajudar a construir a próxima geração do sistema.</p>
+        <a class="btn primary" href="https://wa.me/5554999999999?text=Quero%20saber%20mais%20sobre%20o%20SOD%20One">Falar sobre o SOD One</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footerRow">
+    <div>© 2026 SOD One Platform</div>
+    <div>Powered by Dalpiva Centro Técnico</div>
+  </div>
+</footer>
+</body>
+</html>
