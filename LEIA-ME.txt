@@ -1,0 +1,15 @@
+SOD One - Site com Login
+
+Arquivos:
+- index.html = landing page pública
+- login.html = tela de login
+- style.css = estilos do site e login
+
+Para hospedar no Cloudflare Pages:
+1. Envie estes 3 arquivos juntos.
+2. O arquivo principal deve se chamar index.html.
+3. Depois conecte o domínio sodone.com.br.
+4. Futuramente conectar login real ao Supabase.
+
+Observação:
+A tela de login está visualmente pronta, mas ainda não autentica usuários reais.
