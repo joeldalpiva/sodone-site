@@ -1,14 +1,156 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOD One Platform V8</title>
-  <meta name="description" content="SOD One Platform V8 - SaaS comercial para oficinas." />
-  <link rel="stylesheet" href="./styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOD One Platform V8.1.1</title>
+<meta name="description" content="SOD One Platform V8.1.1 - SaaS comercial para oficinas.">
+<style>
+:root{
+  --bg:#07090d;--panel:#10141c;--card:#151a24;--line:rgba(255,255,255,.10);
+  --text:#f6f7fb;--muted:#aab3c2;--orange:#ff7a00;--orange2:#ffad5c;--green:#29c56a;
+  --shadow:0 24px 80px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top left,rgba(255,122,0,.18),transparent 30%),linear-gradient(180deg,#07090d,#0d1018 50%,#07090d);color:var(--text);min-height:100vh}
+a{color:inherit;text-decoration:none}.container{width:min(1180px,92%);margin:auto}
+button,input,select{font-family:inherit}
+.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.18s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#111;box-shadow:0 14px 35px rgba(255,122,0,.25)}
+.btn.secondary{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900}
+.logoMark{width:44px;height:44px;border-radius:15px;background:linear-gradient(135deg,var(--orange),#ffc08a);color:#111;display:grid;place-items:center;font-weight:900;box-shadow:0 12px 30px rgba(255,122,0,.25)}
+.badge{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,122,0,.32);background:rgba(255,122,0,.12);color:#ffd0aa;border-radius:999px;padding:7px 11px;font-size:13px;font-weight:900}
+.siteHeader{position:sticky;top:0;z-index:20;background:rgba(7,9,13,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.navLinks{display:flex;gap:20px;color:var(--muted);font-weight:700;font-size:14px}
+.hero{padding:84px 0 52px}
+.heroGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}
+.hero h1{font-size:clamp(42px,7vw,78px);line-height:.95;letter-spacing:-3px;margin:18px 0 22px}
+.hero p{font-size:20px;color:var(--muted);max-width:680px;margin-bottom:28px}
+.heroActions{display:flex;gap:12px;flex-wrap:wrap}
+.mock{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:30px;padding:20px;box-shadow:var(--shadow)}
+.mockScreen{background:#0b0f16;border:1px solid var(--line);border-radius:22px;padding:18px;min-height:420px}
+.mockTop{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px}
+.kpi small{color:var(--muted);font-weight:800}.kpi b{display:block;font-size:30px;margin-top:7px;color:#fff}
+.flow{display:grid;gap:10px;margin-top:14px}.flow div{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:13px;display:flex;justify-content:space-between;color:var(--muted)}.flow span{color:var(--orange2);font-weight:900}
+.section{padding:70px 0}.sectionTitle{max-width:760px;margin-bottom:28px}
+.sectionTitle h2{font-size:clamp(32px,5vw,52px);letter-spacing:-2px;line-height:1;margin-bottom:14px}
+.sectionTitle p{color:var(--muted);font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card,.panel{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:24px;padding:24px}
+.card h3{font-size:21px;margin-bottom:9px}.card p{color:var(--muted)}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price{background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:26px}
+.price.featured{border-color:rgba(255,122,0,.6);box-shadow:0 22px 60px rgba(255,122,0,.14)}
+.price h3{font-size:28px}.price p{color:var(--muted);margin:8px 0 18px}
+.price ul{list-style:none;display:grid;gap:10px;color:var(--muted)}.price li:before{content:"✓";color:var(--green);font-weight:900;margin-right:8px}
+.cta{background:linear-gradient(135deg,rgba(255,122,0,.2),rgba(255,255,255,.055));border:1px solid var(--line);border-radius:34px;padding:54px;text-align:center;box-shadow:var(--shadow)}
+.cta h2{font-size:clamp(34px,5vw,58px);letter-spacing:-2px;line-height:1;margin-bottom:14px}.cta p{color:var(--muted);font-size:18px;max-width:700px;margin:0 auto 24px}
+.formWrap{min-height:100vh;display:grid;place-items:center;padding:24px}
+.authCard{width:min(980px,100%);display:grid;grid-template-columns:.95fr 1.05fr;background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:34px;overflow:hidden;box-shadow:var(--shadow)}
+.authForm{padding:34px}.authForm h1{font-size:44px;line-height:1;letter-spacing:-2px;margin:28px 0 12px}.authForm p{color:var(--muted);margin-bottom:22px}
+.field{display:grid;gap:7px;margin-bottom:14px}.field label{font-size:13px;color:#dce1e8;font-weight:900}
+.field input,.field select{width:100%;padding:15px;border-radius:15px;border:1px solid var(--line);background:#0b0f16;color:#fff;outline:none}
+.authSide{background:radial-gradient(circle at top,rgba(255,122,0,.24),rgba(255,255,255,.04));padding:34px;display:grid;align-content:center}
+.authSide h2{font-size:34px;line-height:1.05;margin-bottom:16px}.authSide ul{list-style:none;display:grid;gap:12px;color:#dce1e8}.authSide li{background:rgba(0,0,0,.18);border:1px solid var(--line);border-radius:16px;padding:13px}
+.appShell{display:grid;grid-template-columns:290px minmax(0,1fr);min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;background:rgba(8,10,14,.94);border-right:1px solid var(--line);padding:20px 16px;overflow:auto}
+.version{margin:14px 0 18px;border:1px solid rgba(255,122,0,.25);background:rgba(255,122,0,.09);color:#ffc08a;text-align:center;border-radius:999px;padding:8px;font-size:12px;font-weight:900}
+.sideNav{display:grid;gap:7px}.sideNav button{background:transparent;border:1px solid transparent;color:#dce1e8;text-align:left;border-radius:14px;padding:12px;font-weight:800;cursor:pointer}
+.sideNav button.active,.sideNav button:hover{background:linear-gradient(135deg,rgba(255,122,0,.95),rgba(255,173,92,.9));color:#111}
+.group{font-size:11px;text-transform:uppercase;color:#68707c;font-weight:900;letter-spacing:.12em;margin:16px 8px 4px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(12,15,22,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:16px 22px;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.topbar h2{font-size:21px}.topbar small{color:var(--muted)}.workspace main{padding:22px;max-width:1600px;margin:auto}
+.dashHero{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-bottom:16px}.dashHero .panel:first-child{background:linear-gradient(135deg,rgba(255,122,0,.18),rgba(255,255,255,.04))}
+.dashHero h1{font-size:42px;letter-spacing:-1.5px;line-height:1;margin:10px 0}.muted{color:var(--muted)}
+.dashboardGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
+.dashKpi{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:18px}
+.dashKpi small{color:var(--muted);font-weight:900;text-transform:uppercase;font-size:11px}.dashKpi b{display:block;font-size:34px;margin-top:8px;color:#fff}.dashKpi span{color:var(--orange2);font-weight:800}
+.grid2{display:grid;grid-template-columns:1.3fr .7fr;gap:14px}.list{display:grid;gap:10px}
+.item{background:#10141d;border:1px solid var(--line);border-radius:16px;padding:13px;display:flex;justify-content:space-between;gap:10px;color:#dce1e8}
+.item small{display:block;color:var(--muted);margin-top:3px}.pill{border-radius:999px;background:rgba(255,122,0,.14);border:1px solid rgba(255,122,0,.3);color:#ffc08a;padding:4px 8px;font-size:12px;font-weight:900;white-space:nowrap}
+.notice{border-left:4px solid var(--orange);background:rgba(255,122,0,.08);border-radius:14px;padding:14px;color:#ffd9bd}
+.table{width:100%;border-collapse:collapse;margin-top:14px}.table th,.table td{border-bottom:1px solid var(--line);padding:12px;text-align:left}.table th{color:#ffc08a}
+.moduleGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:16px}
+@media(max-width:980px){.heroGrid,.cards,.pricing,.authCard,.appShell,.dashHero,.grid2{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.dashboardGrid{grid-template-columns:repeat(2,1fr)}.navLinks{display:none}}
+@media(max-width:560px){.heroActions .btn,.btn.full{width:100%}.kpis,.dashboardGrid{grid-template-columns:1fr}.hero h1{letter-spacing:-2px}.cta{padding:30px}.authSide{display:none}.workspace main{padding:14px}}
+</style>
 </head>
 <body>
-  <div id="app"></div>
-  <script type="module" src="./app/main.js"></script>
+<div id="app"></div>
+<script>
+const USER_KEY = "sodone_v811_user";
+const OFFICES_KEY = "sodone_v811_offices";
+const $ = (s)=>document.querySelector(s);
+
+function getUser(){ try{return JSON.parse(localStorage.getItem(USER_KEY))}catch(e){return null} }
+function setUser(u){ localStorage.setItem(USER_KEY, JSON.stringify(u)); }
+function logout(){ localStorage.removeItem(USER_KEY); go('/login'); }
+function getOffices(){ try{return JSON.parse(localStorage.getItem(OFFICES_KEY)||"{}")}catch(e){return {}} }
+function saveOffice(o){ const offices=getOffices(); offices[o.id]=o; localStorage.setItem(OFFICES_KEY, JSON.stringify(offices)); }
+function getOffice(id){ return getOffices()[id] || null; }
+function seedDalpiva(){
+  const office={id:"office_dalpiva_demo",name:"Dalpiva Centro Técnico",responsible:"Joel Dalpiva",email:"gordodalpiva@gmail.com",plan:"Plus",status:"active",createdAt:new Date().toISOString()};
+  saveOffice(office);
+  setUser({id:"user_joel_demo",name:"Joel Dalpiva",email:office.email,role:"owner",organization_id:office.id});
+}
+function go(path){ location.hash=path; }
+window.addEventListener("hashchange", router);
+window.addEventListener("load", router);
+
+function logo(){ return '<div class="logo"><div class="logoMark">S1</div><div>SOD One</div></div>'; }
+function router(){
+  const path=location.hash.replace("#","")||"/";
+  if(path==="/login") return renderLogin();
+  if(path==="/signup") return renderSignup();
+  if(path==="/app") return renderApp();
+  if(path==="/admin") return renderAdmin();
+  renderSite();
+}
+function renderSite(){
+  $("#app").innerHTML=`
+  <header class="siteHeader"><div class="container nav">${logo()}<nav class="navLinks"><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="#saas">SaaS</a></nav><button class="btn primary" onclick="go('/login')">Entrar</button></div></header>
+  <main>
+    <section class="hero"><div class="container heroGrid"><div><div class="badge">🚀 SOD One Platform V8.1.1</div><h1>O sistema operacional das oficinas modernas.</h1><p>Gestão comercial para oficinas: fluxo, veículos, orçamento, estoque, checklist, pós-venda, base técnica e inteligência SOD em uma plataforma SaaS.</p><div class="heroActions"><button class="btn primary" onclick="go('/signup')">Criar oficina</button><button class="btn secondary" onclick="go('/login')">Acessar app</button></div></div><div class="mock"><div class="mockScreen"><div class="mockTop"><span>● SOD Dashboard</span><span>Multiempresa</span></div><div class="kpis"><div class="kpi"><small>Oficinas</small><b>12</b></div><div class="kpi"><small>OS ativas</small><b>248</b></div><div class="kpi"><small>Pós-venda</small><b>37</b></div><div class="kpi"><small>Receita</small><b>R$ 86k</b></div></div><div class="flow"><div><b>Dalpiva Centro Técnico</b><span>Plus</span></div><div><b>Auto Center Silva</b><span>Basic</span></div><div><b>Oficina Premium</b><span>Pro</span></div><div><b>Diesel Tech</b><span>Plus</span></div></div></div></div></div></section>
+    <section id="recursos" class="section"><div class="container"><div class="sectionTitle"><h2>Base comercial em arquivo único.</h2><p>Essa versão simplifica o upload: somente um arquivo index.html, sem pasta, sem CSS separado, sem confusão no GitHub.</p></div><div class="cards"><div class="card"><h3>🔐 Login preparado</h3><p>Tela pronta para conectar ao Supabase Auth.</p></div><div class="card"><h3>🏢 Multiempresa</h3><p>Estrutura por oficina, plano e usuário.</p></div><div class="card"><h3>🧩 Migração V7</h3><p>Mapa de módulos para migrar a versão operacional.</p></div><div class="card"><h3>🧠 Inteligência SOD</h3><p>Base técnica e OS inteligente como diferencial.</p></div><div class="card"><h3>💳 Planos</h3><p>Basic, Plus e Pro preparados.</p></div><div class="card"><h3>🛡 Admin</h3><p>Painel interno inicial para controlar oficinas.</p></div></div></div></section>
+    <section id="planos" class="section"><div class="container"><div class="sectionTitle"><h2>Planos comerciais.</h2><p>Estrutura inicial para vender o SOD One como produto SaaS.</p></div><div class="pricing"><div class="price"><h3>Basic</h3><p>Para organizar a operação.</p><ul><li>Fluxo da oficina</li><li>Veículos</li><li>Checklist</li><li>Orçamentos</li></ul></div><div class="price featured"><div class="badge">Mais indicado</div><h3>Plus</h3><p>Para oficina em crescimento.</p><ul><li>Tudo do Basic</li><li>Estoque</li><li>Pós-venda</li><li>Base técnica</li><li>Fotos e relatórios</li></ul></div><div class="price"><h3>Pro</h3><p>Para gestão avançada.</p><ul><li>Tudo do Plus</li><li>Indicadores</li><li>Multiusuário</li><li>IA SOD</li><li>Suporte prioritário</li></ul></div></div></div></section>
+    <section id="saas" class="section"><div class="container"><div class="cta"><h2>Agora é só substituir o index.html.</h2><p>Essa versão evita o problema das pastas no GitHub. Depois conectamos Supabase e começamos a migrar a V7.</p><button class="btn primary" onclick="go('/signup')">Criar oficina demo</button></div></div></section>
+  </main>`;
+}
+function renderLogin(){
+  $("#app").innerHTML=`<main class="formWrap"><section class="authCard"><div class="authForm">${logo()}<h1>Entrar no SOD One</h1><p>Acesso ao ambiente da oficina.</p><div class="field"><label>E-mail</label><input type="email" placeholder="joel@oficina.com.br"></div><div class="field"><label>Senha</label><input type="password" placeholder="Digite sua senha"></div><button class="btn primary full" onclick="seedDalpiva();go('/app')">Entrar em modo demonstração</button><div style="height:12px"></div><button class="btn secondary full" onclick="go('/signup')">Criar oficina</button><p style="margin-top:18px"><a href="#" onclick="go('/')">← Voltar ao site</a></p></div><div class="authSide"><h2>Login pronto para Supabase.</h2><ul><li>✅ Login visual</li><li>✅ Organização por oficina</li><li>✅ Plano comercial</li><li>⏳ Próximo: autenticação real</li></ul></div></section></main>`;
+}
+function renderSignup(){
+  $("#app").innerHTML=`<main class="formWrap"><section class="authCard"><div class="authForm">${logo()}<h1>Criar oficina</h1><p>Primeiro cadastro comercial do SOD One Platform.</p><div class="field"><label>Nome da oficina</label><input id="oficina" value="Dalpiva Centro Técnico"></div><div class="field"><label>Responsável</label><input id="responsavel" value="Joel Dalpiva"></div><div class="field"><label>E-mail</label><input id="email" type="email" value="gordodalpiva@gmail.com"></div><div class="field"><label>Plano</label><select id="plano"><option>Basic</option><option selected>Plus</option><option>Pro</option></select></div><button class="btn primary full" onclick="criarOficina()">Criar e acessar</button><p style="margin-top:18px"><a href="#" onclick="go('/login')">Já tenho conta</a></p></div><div class="authSide"><h2>Modelo SaaS desde a fundação.</h2><ul><li>🏢 Oficina = organização</li><li>👤 Usuário vinculado</li><li>💳 Plano salvo</li><li>🔒 Dados isolados por organization_id</li></ul></div></section></main>`;
+}
+function criarOficina(){
+  const office={id:"office_"+Date.now(),name:$("#oficina").value||"Oficina",responsible:$("#responsavel").value||"Responsável",email:$("#email").value||"demo@sodone.com.br",plan:$("#plano").value||"Plus",status:"active",createdAt:new Date().toISOString()};
+  saveOffice(office); setUser({id:"user_"+Date.now(),name:office.responsible,email:office.email,role:"owner",organization_id:office.id}); go("/app");
+}
+function renderApp(){
+  const user=getUser(); if(!user){go("/login");return}
+  let office=getOffice(user.organization_id); if(!office){seedDalpiva(); office=getOffice("office_dalpiva_demo")}
+  $("#app").innerHTML=`<div class="appShell"><aside class="sidebar"><div class="logo"><div class="logoMark">S1</div><div><b>SOD One</b><br><small class="muted">Platform V8.1.1</small></div></div><div class="version">SaaS Foundation • ${office.plan}</div><nav class="sideNav"><button class="active" onclick="appTab('dash',this)">🏠 Dashboard</button><div class="group">Operação</div><button onclick="appTab('fluxo',this)">🚗 Fluxo da oficina</button><button onclick="appTab('veiculos',this)">🚘 Veículos</button><button onclick="appTab('checklist',this)">📋 Checklist</button><button onclick="appTab('orcamentos',this)">💰 Orçamentos</button><button onclick="appTab('pecas',this)">📦 Estoque</button><div class="group">Inteligência</div><button onclick="appTab('base',this)">🧠 Base técnica</button><button onclick="appTab('pos',this)">🤝 Pós-venda</button><button onclick="appTab('legacy',this)">🧩 Migração V7</button><div class="group">Conta</div><button onclick="appTab('config',this)">⚙ Configurações</button><button onclick="go('/admin')">🛡 Admin SOD</button></nav></aside><div class="workspace"><header class="topbar"><div><h2>${office.name}</h2><small>${user.name} • ${user.role} • ${office.plan}</small></div><button class="btn secondary" onclick="logout()">Sair</button></header><main id="appContent"></main></div></div>`;
+  renderAppTab("dash");
+}
+function appTab(tab,btn){document.querySelectorAll(".sideNav button").forEach(b=>b.classList.remove("active")); if(btn)btn.classList.add("active"); renderAppTab(tab)}
+function renderAppTab(tab){
+  const c=$("#appContent");
+  if(tab==="dash"){c.innerHTML=`<section><div class="dashHero"><div class="panel"><div class="badge">Centro de Controle</div><h1>Bem-vindo à V8.1.1.</h1><p class="muted">Fundação SaaS em arquivo único: login, cadastro de oficina, plano, admin e mapa de migração da V7.0.6.</p></div><div class="panel"><h3>Próxima missão</h3><p class="muted" style="margin:10px 0 16px">Conectar Supabase e migrar o Fluxo da Oficina.</p><button class="btn primary" onclick="appTab('legacy')">Ver migração V7</button></div></div><div class="dashboardGrid"><div class="dashKpi"><small>Veículos ativos</small><b>12</b><span>modelo V7</span></div><div class="dashKpi"><small>Orçamentos</small><b>8</b><span>em aberto</span></div><div class="dashKpi"><small>Pós-venda</small><b>5</b><span>hoje</span></div><div class="dashKpi"><small>Plano</small><b>Plus</b><span>comercial</span></div></div><div class="grid2"><div class="panel"><h3>Operação em andamento</h3><div class="list" style="margin-top:12px"><div class="item"><div><b>Hilux • Diagnóstico</b><small>Cliente aguardando orçamento</small></div><span class="pill">Abrir</span></div><div class="item"><div><b>Renegade • Execução</b><small>Peças separadas</small></div><span class="pill">Abrir</span></div><div class="item"><div><b>Saveiro • Entrega</b><small>Checklist final</small></div><span class="pill">Abrir</span></div></div></div><div class="panel"><h3>Status da plataforma</h3><div class="list" style="margin-top:12px"><div class="item"><b>Arquivo único</b><span class="pill">OK</span></div><div class="item"><b>Login visual</b><span class="pill">OK</span></div><div class="item"><b>Multiempresa local</b><span class="pill">OK</span></div><div class="item"><b>Migração V7</b><span class="pill">Mapeada</span></div></div></div></div></section>`}
+  else if(tab==="legacy"){c.innerHTML=`<section class="panel"><h2>🧩 Migração da V7.0.6</h2><p class="muted" style="margin:8px 0 16px">A V7.0.6 Foundation será migrada por módulos.</p><div class="notice"><b>Estratégia:</b> preservar a operação validada e migrar por módulos: primeiro Fluxo, depois Veículos, Checklist, Orçamento, Estoque, Base Técnica e Pós-venda.</div><div class="moduleGrid">${moduleCard("Centro de Controle","Dashboard","Prioridade 1")}${moduleCard("Operação da Oficina","Fluxo","Prioridade 1")}${moduleCard("Veículos / Placa","Veículos","Prioridade 1")}${moduleCard("Checklist","Checklist","Prioridade 2")}${moduleCard("Orçamento","Orçamentos","Prioridade 2")}${moduleCard("Peças / Estoque","Estoque","Prioridade 2")}${moduleCard("Base Técnica","Inteligência SOD","Prioridade 3")}${moduleCard("Pós-venda","CRM","Prioridade 3")}</div></section>`}
+  else if(tab==="config"){const u=getUser(),o=getOffice(u.organization_id);c.innerHTML=`<section class="panel"><h2>⚙ Configuração da oficina</h2><p class="muted">Primeiro cadastro da organização dentro do modelo comercial.</p><div class="dashboardGrid" style="margin-top:16px"><div class="dashKpi"><small>Oficina</small><b style="font-size:22px">${o?.name||"Oficina"}</b><span>organização</span></div><div class="dashKpi"><small>Responsável</small><b style="font-size:22px">${o?.responsible||u.name}</b><span>owner</span></div><div class="dashKpi"><small>E-mail</small><b style="font-size:18px">${o?.email||u.email}</b><span>login</span></div><div class="dashKpi"><small>Plano</small><b style="font-size:24px">${o?.plan||"Plus"}</b><span>assinatura</span></div></div></section>`}
+  else{c.innerHTML=`<section class="panel"><h2>${tabTitle(tab)}</h2><p class="muted">Módulo reservado para migração da V7.0.6 para a Platform V8.1.1.</p><div class="notice" style="margin-top:16px">Próximo passo: transformar este módulo em tela real conectada ao Supabase.</div></section>`}
+}
+function moduleCard(from,to,p){return `<div class="card"><h3>${from}</h3><p>Migrar para: <b>${to}</b></p><div class="pill" style="display:inline-flex;margin-top:12px">${p}</div></div>`}
+function tabTitle(tab){return {fluxo:"🚗 Fluxo da oficina",veiculos:"🚘 Veículos",checklist:"📋 Checklist",orcamentos:"💰 Orçamentos",pecas:"📦 Estoque",base:"🧠 Base técnica",pos:"🤝 Pós-venda"}[tab]||"Módulo"}
+function renderAdmin(){
+  const offices=Object.values(getOffices());
+  $("#app").innerHTML=`<div class="appShell"><aside class="sidebar"><div class="logo"><div class="logoMark">S1</div><div><b>SOD Admin</b><br><small class="muted">Painel interno</small></div></div><div class="version">Admin Platform V8.1.1</div><nav class="sideNav"><button class="active">🏢 Oficinas</button><button onclick="go('/app')">⬅ Voltar ao app</button><button onclick="logout()">Sair</button></nav></aside><div class="workspace"><header class="topbar"><div><h2>Painel administrativo</h2><small>Controle comercial do SOD One</small></div></header><main><section class="panel"><h2>Oficinas cadastradas</h2><p class="muted">Na versão real, esse painel vai controlar clientes, planos, status, suporte e assinaturas.</p><table class="table"><thead><tr><th>Oficina</th><th>Responsável</th><th>E-mail</th><th>Plano</th><th>Status</th></tr></thead><tbody>${offices.map(o=>`<tr><td>${o.name}</td><td>${o.responsible}</td><td>${o.email}</td><td>${o.plan}</td><td><span class="pill">${o.status}</span></td></tr>`).join("")||`<tr><td colspan="5">Nenhuma oficina cadastrada ainda.</td></tr>`}</tbody></table></section></main></div></div>`;
+}
+</script>
 </body>
 </html>
