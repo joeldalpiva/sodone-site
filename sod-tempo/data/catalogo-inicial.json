@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "implantacao",
+  "rules": {
+    "officialRequiresSource": true,
+    "technicianCanSeeEfficiency": false,
+    "managerialMetricsRestricted": true,
+    "executionRequiresPop": true
+  },
+  "brands": [
+    {"name":"Volkswagen","families":["Gol/Voyage/Saveiro","Fox/SpaceFox","Polo/Virtus","Golf/Jetta","T-Cross/Nivus","Tiguan","Amarok 2.0 TDI","Amarok V6"]},
+    {"name":"Chevrolet","families":["Celta/Corsa/Classic","Onix/Prisma","Spin/Cobalt","Cruze","Tracker","Montana","S10/Trailblazer"]},
+    {"name":"Fiat","families":["Uno","Palio/Siena","Strada","Punto/Linea","Mobi","Argo/Cronos","Toro"]},
+    {"name":"Ford","families":["Ka","Fiesta","Focus","EcoSport","Fusion","Ranger"]},
+    {"name":"Toyota","families":["Corolla","Etios","Yaris","Hilux","SW4"]},
+    {"name":"Renault","families":["Clio","Sandero/Logan","Duster/Oroch","Kwid"]},
+    {"name":"Jeep","families":["Renegade","Compass","Commander"]},
+    {"name":"Honda","families":["Fit","City","Civic","HR-V"]},
+    {"name":"Hyundai","families":["HB20","Creta","Tucson/ix35","Santa Fe"]},
+    {"name":"Nissan","families":["March","Versa","Sentra","Kicks","Frontier"]}
+  ],
+  "serviceGroups": [
+    "Revisao, oleo e filtros","Freios","Suspensao e direcao","Correias e correntes","Arrefecimento","Ignicao e injecao","Embreagem e transmissao manual","Cambio automatico","Motor e cabecote","Turbo, EGR e DPF","Ar-condicionado e diagnostico eletronico"
+  ],
+  "executionStepTypes": ["check","photo","measurement","torque","text","quality_control"],
+  "sourceTypes": ["manufacturer_official","confirmed_technical_base","dalpiva_history","pending_estimate"]
+}
