@@ -1,0 +1,17 @@
+{
+  "versao": "0.1",
+  "montadoras": [
+    {"nome":"Volkswagen","familias":["Gol/Voyage/Saveiro","Fox","Polo/Virtus","T-Cross/Nivus","Golf/Jetta","Tiguan","Amarok"]},
+    {"nome":"Chevrolet","familias":["Celta/Corsa/Classic","Onix/Prisma","Spin","Cruze","Tracker","Montana","S10/Trailblazer"]},
+    {"nome":"Fiat","familias":["Uno","Palio/Siena","Strada","Punto/Linea","Argo/Cronos","Mobi","Toro"]},
+    {"nome":"Ford","familias":["Ka","Fiesta","Focus","EcoSport","Fusion","Ranger"]},
+    {"nome":"Toyota","familias":["Corolla","Etios","Yaris","Hilux/SW4"]},
+    {"nome":"Renault","familias":["Clio","Sandero/Logan","Duster/Oroch","Kwid"]},
+    {"nome":"Jeep","familias":["Renegade","Compass","Commander"]},
+    {"nome":"Honda","familias":["Fit","City","Civic","HR-V"]},
+    {"nome":"Hyundai","familias":["HB20","Creta","Tucson/ix35","Santa Fe"]},
+    {"nome":"Nissan","familias":["March","Versa","Sentra","Kicks","Frontier"]}
+  ],
+  "categoriasPrioritarias": ["Revisão","Freios","Suspensão","Distribuição","Arrefecimento","Ignição/Injeção","Embreagem","Transmissão/Câmbio","Motor","Ar-condicionado","Diagnóstico eletrônico"],
+  "fontes": ["Montadora/Oficial","Base técnica confirmada","Histórico Dalpiva","Pendente/estimado"]
+}
